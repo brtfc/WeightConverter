@@ -46,13 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Max Weight Exceeded", Toast.LENGTH_LONG).show();
                     }
                 }
-                else {
-                    converted_weight = userWeight * 2.20462;
-                    displayConvertedWeight.setText(String.format("%.1f kilograms", converted_weight));
-                }
-
-/*
-                if(kilosToPounds.isChecked()){
+                else if (kilosToPounds.isChecked()){
                     if(userWeight <= 500){
                         converted_weight = userWeight * 2.20462;
                         displayConvertedWeight.setText(String.format("%.1f kilograms", converted_weight));
@@ -61,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Max Weight Exceeded", Toast.LENGTH_LONG).show();
                     }
                 }
- */
+
             }
         });
     }
