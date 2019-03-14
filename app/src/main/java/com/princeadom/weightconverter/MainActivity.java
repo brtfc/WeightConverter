@@ -13,50 +13,47 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
+    String convertedWeight;
 
-    double userWeight,
-           converted_weight;
+    //get the selected radio button
+    public void getUnit(View view){
+
+        //is the button checked?
+        boolean radioBtn_checked = ((RadioButton) view).isChecked();
+
+        //get the user input value and convert it into a double value instead of a string
+        EditText userWeight = findViewById(R.id.weightInput_edtTxt);
+        double inputWeight = Double.parseDouble(userWeight.getText().toString());
+
+        //check which radio button was clicked and assign its ID to the integer variable
+        switch (view.getId()){
+            case R.id.KilosToPounds:
+                if(radioBtn_checked){
+                    convertedWeight = String.format("%.2fkg is %.2flbs",inputWeight,inputWeight * 2.20462);
+                }
+                break;
+            case R.id.PoundsToKilos:
+                if(radioBtn_checked){
+                    convertedWeight = String.format("%.2flbs is %.2fkg",inputWeight,inputWeight * 0.453592);
+                }
+                break;
+
+        }
+
+    }
+
+    //use the selected radio button to convert the weight and populate the text view area with it
+    public void convertWeight(View view){
+        TextView displayConvertedWeight = findViewById(R.id.displayValue_txtView);
+        displayConvertedWeight.setText(convertedWeight);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.mipmap.ic_launcher_icon);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        final RadioButton poundsToKilos = findViewById(R.id.pndsToKilo_rdiobtn);
-        final RadioButton kilosToPounds = findViewById(R.id.kiloToPnds_rdiobtn);
-        final EditText weightVal = findViewById(R.id.weightInput_edtTxt);
-        Button convertWeight = findViewById(R.id.convertWeight_btn);
-        final TextView displayConvertedWeight = findViewById(R.id.displayValue_txtView);
-
-        convertWeight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //retrieve and store the converted weight
-                userWeight = Double.parseDouble(weightVal.getText().toString());
-                if(poundsToKilos.isChecked()){
-                    if(userWeight <= 500){
-                        converted_weight = userWeight * 0.453592;
-                        displayConvertedWeight.setText(String.format("%.1f kilograms", converted_weight));
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Max Weight Exceeded", Toast.LENGTH_LONG).show();
-                    }
-                }
-                else if (kilosToPounds.isChecked()){
-                    if(userWeight <= 500){
-                        converted_weight = userWeight * 2.20462;
-                        displayConvertedWeight.setText(String.format("%.1f kilograms", converted_weight));
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Max Weight Exceeded", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-            }
-        });
     }
 }

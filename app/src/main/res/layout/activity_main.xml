@@ -12,11 +12,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginBottom="540dp"
+        android:layout_marginBottom="516dp"
         android:gravity="center"
-        android:textColor="#e64a19"
         android:text="Convert Patient Weight"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#e64a19"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
-        android:layout_marginBottom="452dp"
+        android:layout_marginBottom="428dp"
         android:ems="10"
         android:hint="Weight of Patient"
         android:inputType="textPersonName"
@@ -35,37 +35,30 @@
 
 
     <RadioGroup
+        android:id="@+id/conversion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginLeft="148dp"
-        android:layout_marginBottom="440dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/pndsToKilo_rdiobtn"
+            android:id="@+id/PoundsToKilos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
-            android:layout_marginLeft="96dp"
-            android:layout_marginBottom="392dp"
-            android:text="Convert Pounds to Kilograms"
-            android:checked="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:onClick="getUnit"
+            android:text="Convert Pounds to Kilograms" />
 
         <RadioButton
-            android:id="@+id/kiloToPnds_rdiobtn"
+            android:id="@+id/KilosToPounds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="96dp"
-            android:layout_marginLeft="96dp"
-            android:layout_marginBottom="348dp"
-            android:text="Convert Kilograms to Pounds"
-            android:checked="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:onClick="getUnit"
+            android:text="Convert Kilograms to Pounds" />
+
+    </RadioGroup>
 
 
     <Button
@@ -75,6 +68,7 @@
         android:layout_marginStart="133dp"
         android:layout_marginLeft="133dp"
         android:layout_marginBottom="270dp"
+        android:onClick="convertWeight"
         android:text="Convert Weight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -91,7 +85,6 @@
         android:textColor="#e64a19"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </android.support.constraint.ConstraintLayout>
